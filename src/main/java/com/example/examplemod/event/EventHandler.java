@@ -26,6 +26,7 @@ public class EventHandler {
         if (event.didChunkChange() && !level.isClientSide() && TestBlockEntity.didEnterSafeChunk(event.getNewPos().chunk())) {
             LightningBolt lightningBolt = new LightningBolt(EntityType.LIGHTNING_BOLT, level);
             lightningBolt.setPos(entity.position());
+            lightningBolt.setVisualOnly(true);
             level.addFreshEntity(lightningBolt);
             entity.kill();
         }
@@ -36,4 +37,5 @@ public class EventHandler {
         log.info("server stopped");
         TestBlockEntity.removeAll();
     }
+
 }

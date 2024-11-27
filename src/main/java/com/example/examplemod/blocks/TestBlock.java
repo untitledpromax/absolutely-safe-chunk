@@ -67,6 +67,7 @@ public class TestBlock extends Block implements EntityBlock {
             monsterList.forEach(monster -> {
                 LightningBolt lightningBolt = new LightningBolt(EntityType.LIGHTNING_BOLT, pLevel);
                 lightningBolt.setPos(monster.position());
+                lightningBolt.setVisualOnly(true);
                 pLevel.addFreshEntity(lightningBolt);
                 monster.kill();
             });

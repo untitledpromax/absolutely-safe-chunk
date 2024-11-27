@@ -2,12 +2,9 @@ package com.example.examplemod.blocks;
 
 import com.example.examplemod.ExampleMod;
 import com.example.examplemod.items.ModItems;
-import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.DropExperienceBlock;
-import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -22,11 +19,7 @@ public class ModBlocks {
 
     public static final RegistryObject<Block> TEST_BLOCK = registryBlock("test_block", TestBlock::new);
 
-    public static final RegistryObject<Block> TEST_ORE = registryBlock("test_ore",
-            //返回一个掉落经验的方块
-            ()->new DropExperienceBlock(BlockBehaviour.Properties.of()//创建一个空属性
-                    .strength(1.5F, 3.0F)//设置硬度和爆炸防护强度
-                    , UniformInt.of(1, 2)));//设置经验值掉落范围
+    public static final RegistryObject<Block> TEST_EMPTY = registryBlock("test_empty", EmptyTestBlock::new);
 
     //自定义注册方法方法，因为要同时注册方块和方块对应的物品，就写在一起了
     private static <T extends Block> RegistryObject<T> registryBlock(String name, Supplier<T> block){

@@ -24,7 +24,7 @@ public class ModCreativeModeTab {
                     //开始向物品栏里添加我们新增的物品
                     .displayItems((pParameters, pOutput) -> {
                         pOutput.accept(ModBlocks.TEST_BLOCK.get());
-                        pOutput.accept(ModBlocks.TEST_ORE.get());
+                        pOutput.accept(ModBlocks.TEST_EMPTY.get());
                     })
                     .build());//构建完成
 
