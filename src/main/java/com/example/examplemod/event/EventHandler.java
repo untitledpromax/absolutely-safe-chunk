@@ -1,12 +1,14 @@
 package com.example.examplemod.event;
 
 import com.example.examplemod.blocks.TestBlockEntity;
+import com.example.examplemod.render.ChunkRegionRenderer;
 import lombok.extern.slf4j.Slf4j;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LightningBolt;
 import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.level.Level;
+import net.minecraftforge.client.event.RenderLevelStageEvent;
 import net.minecraftforge.event.entity.EntityEvent.EnteringSection;
 import net.minecraftforge.event.server.ServerStoppedEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -36,6 +38,15 @@ public class EventHandler {
     public static void serverStopEvent(ServerStoppedEvent event) {
         log.info("server stopped");
         TestBlockEntity.removeAll();
+    }
+
+    @SubscribeEvent
+    public static void onRenderWorldLastEvent(RenderLevelStageEvent event) {
+        // guarantee to render only after particles
+        if (event.getStage() != RenderLevelStageEvent.Stage.AFTER_PARTICLES || TestBlockEntity.getChunkPosCntMap() == null) {
+            return;
+        }
+        TestBlockEntity.getChunkPosCntMap().forEach((chunkPos, cnt) -> ChunkRegionRenderer.renderChunkRegion(event.getCamera(), event.getPoseStack(), chunkPos));
     }
 
 }
