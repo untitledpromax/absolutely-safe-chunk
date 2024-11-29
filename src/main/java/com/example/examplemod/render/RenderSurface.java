@@ -6,7 +6,6 @@ import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.EqualsAndHashCode;
 import net.minecraft.Util;
 import net.minecraft.client.Camera;
 import net.minecraft.client.Minecraft;
@@ -36,7 +35,7 @@ public abstract class RenderSurface {
         RenderSystem.setShader(GameRenderer::getPositionTexShader);
         RenderSystem.depthMask(Minecraft.useShaderTransparency());
         RenderSystem.applyModelViewMatrix();
-        RenderSystem.setShaderColor(2.0F, 1.0F, 1.0F, 1.0F);
+        RenderSystem.setShaderColor(1.0F, 0.84F, 0.0F, 1.0F);
         RenderSystem.polygonOffset(-3.0F, -3.0F);
         RenderSystem.enablePolygonOffset();
         RenderSystem.disableCull();

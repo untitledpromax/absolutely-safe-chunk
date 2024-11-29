@@ -1,8 +1,6 @@
 package com.example.examplemod.event;
 
 import com.example.examplemod.blocks.TestBlockEntity;
-import com.example.examplemod.render.ChunkRegionRenderer;
-import com.example.examplemod.render.RenderSurface;
 import lombok.extern.slf4j.Slf4j;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
