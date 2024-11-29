@@ -2,6 +2,7 @@ package com.example.examplemod.event;
 
 import com.example.examplemod.blocks.TestBlockEntity;
 import com.example.examplemod.render.ChunkRegionRenderer;
+import com.example.examplemod.render.RenderSurface;
 import lombok.extern.slf4j.Slf4j;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
@@ -46,7 +47,7 @@ public class EventHandler {
         if (event.getStage() != RenderLevelStageEvent.Stage.AFTER_PARTICLES || TestBlockEntity.getChunkPosCntMap() == null) {
             return;
         }
-        TestBlockEntity.getChunkPosCntMap().forEach((chunkPos, cnt) -> ChunkRegionRenderer.renderChunkRegion(event.getCamera(), event.getPoseStack(), chunkPos));
+        TestBlockEntity.getRenderSurfaces().forEach((surface) -> surface.render(event.getCamera(), event.getPoseStack()));
     }
 
 }
